@@ -31,32 +31,45 @@ ENDMETHOD.
 
 
 METHOD generate_demo_data.
-    DATA: demo_data_line TYPE zGE289409,
-          demo_data      TYPE STANDARD TABLE OF zGE289409.
-    DATA long_time_stamp TYPE timestampl.
+  DATA: demo_data_line  TYPE zge289409,
+        demo_data       TYPE STANDARD TABLE OF zge289409,
+        long_time_stamp TYPE timestampl,
+        lv_index        TYPE i,
+        lv_order_id     TYPE c LENGTH 8,
+        lv_order_qty    TYPE c LENGTH 4.
 
-    "begin of code-snippet
-    demo_data_line-client = '100'.
+  GET TIME STAMP FIELD long_time_stamp.
+
+  DO 10 TIMES.
+    CLEAR demo_data_line.
+
+    lv_index = 10 + sy-index.
+
+    demo_data_line-client     = sy-mandt.
     demo_data_line-order_uuid = xco_cp=>uuid( )->value.
-    demo_data_line-order_id = '00000001' .
-    demo_data_line-ordered_item = 'HT-1001'.
-    demo_data_line-order_quantity =  '0001' .
-    demo_data_line-total_price = '10.00'.
+
+    lv_order_id = |{ lv_index WIDTH = 8 PAD = '0' }|.
+    demo_data_line-order_id = lv_order_id.
+
+    demo_data_line-ordered_item = |HT-{ 1000 + lv_index }|.
+
+    lv_order_qty = |{ lv_index WIDTH = 4 PAD = '0' }|.
+    demo_data_line-order_quantity = lv_order_qty.
+
+    demo_data_line-total_price = 10 * lv_index.
     demo_data_line-currency = 'EUR'.
-    demo_data_line-requested_delivery_date = xco_cp=>sy->date( )->as( xco_cp_time=>format->abap )->value.
-    demo_data_line-created_by = xco_cp=>sy->user( )->name.
+    demo_data_line-requested_delivery_date = sy-datum.
+    demo_data_line-created_by = sy-uname.
     demo_data_line-created_at = long_time_stamp.
-    demo_data_line-last_changed_by = xco_cp=>sy->user( )->name.
+    demo_data_line-last_changed_by = sy-uname.
     demo_data_line-last_changed_at = long_time_stamp.
     demo_data_line-local_last_changed_at = long_time_stamp.
+
     APPEND demo_data_line TO demo_data.
-    "end of code-snippet
+  ENDDO.
 
-
-    INSERT zGE289409 FROM TABLE @demo_data.
-    COMMIT WORK.
-
-    CLEAR demo_data.
+  INSERT zge289409 FROM TABLE @demo_data.
+  COMMIT WORK.
 ENDMETHOD.
 
 ENDCLASS.
