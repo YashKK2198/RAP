@@ -40,10 +40,10 @@ METHOD generate_demo_data.
 
   GET TIME STAMP FIELD long_time_stamp.
 
-  DO 10 TIMES.
+  DO 20 TIMES.
     CLEAR demo_data_line.
 
-    lv_index = 10 + sy-index.
+    lv_index = sy-index.
 
     demo_data_line-client     = sy-mandt.
     demo_data_line-order_uuid = xco_cp=>uuid( )->value.
@@ -58,7 +58,7 @@ METHOD generate_demo_data.
 
     demo_data_line-total_price = 10 * lv_index.
     demo_data_line-currency = 'EUR'.
-    demo_data_line-requested_delivery_date = sy-datum.
+    demo_data_line-requested_delivery_date = cl_abap_context_info=>get_system_date( ).
     demo_data_line-created_by = sy-uname.
     demo_data_line-created_at = long_time_stamp.
     demo_data_line-last_changed_by = sy-uname.
@@ -70,6 +70,6 @@ METHOD generate_demo_data.
 
   INSERT zge289409 FROM TABLE @demo_data.
   COMMIT WORK.
-ENDMETHOD.
+ENDMETHOD..
 
 ENDCLASS.
