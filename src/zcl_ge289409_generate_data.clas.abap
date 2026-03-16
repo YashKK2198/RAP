@@ -70,6 +70,6 @@ METHOD generate_demo_data.
 
   INSERT zge289409 FROM TABLE @demo_data.
   COMMIT WORK.
-ENDMETHOD..
+ENDMETHOD.
 
 ENDCLASS.
