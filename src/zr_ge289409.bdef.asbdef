@@ -1,4 +1,4 @@
-managed implementation in class ZBP_R_GE289409 unique;
+managed with additional save implementation in class ZBP_R_GE289409 unique;
 strict ( 2 );
 with draft;
 extensible;
@@ -25,7 +25,14 @@ authorization master ( global )
   field ( numbering : managed )
   OrderUUID;
 
+  // side effect events
+  event statusUpdated for side effects;
 
+  side effects
+  {
+    event statusUpdated affects field ( TotalPrice, Notes, OverallStatus, SalesOrderStatus,
+    Salesorder, ManageSalesOrderUrl );
+  }
   create;
   update;
   delete;
