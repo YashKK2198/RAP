@@ -2,5 +2,5 @@
 @MappingRole: true
 define role ZC_GE289409 {
   grant select on ZC_GE289409
-  where INHERITING CONDITIONS FROM ENTITY ZR_GE289409 REPLACING { ROOT WITH _BaseEntity };
+  where inheriting conditions from entity ZR_GE289409;
 }
