@@ -1,0 +1,223 @@
+@Metadata.layer: #CORE
+@UI.headerInfo.title.type: #STANDARD
+@UI.headerInfo.title.value: 'BookID'
+@UI.headerInfo.description.type: #STANDARD
+@UI.headerInfo.description.value: 'BookID'
+annotate view ZC_BOOK000ZAC with
+{
+  @EndUserText.label: 'UUID'
+  @UI.identification: [ {
+    position: 10 , 
+    label: 'UUID'
+  } ]
+  @UI.lineItem: [ {
+    position: 10 , 
+    label: 'UUID'
+  } ]
+  @UI.selectionField: [ {
+    position: 10 
+  } ]
+  UUID;
+  
+  @EndUserText.label: 'BookID'
+  @UI.facet: [ {
+    label: 'General Information', 
+    id: 'GeneralInfo', 
+    purpose: #STANDARD, 
+    position: 20 , 
+    type: #IDENTIFICATION_REFERENCE
+  } ]
+  @UI.identification: [ {
+    position: 20 , 
+    label: 'BookID'
+  } ]
+  @UI.lineItem: [ {
+    position: 20 , 
+    label: 'BookID'
+  } ]
+  @UI.selectionField: [ {
+    position: 20 
+  } ]
+  BookID;
+  
+  @EndUserText.label: 'Title'
+  @UI.identification: [ {
+    position: 30 , 
+    label: 'Title'
+  } ]
+  @UI.lineItem: [ {
+    position: 30 , 
+    label: 'Title'
+  } ]
+  @UI.selectionField: [ {
+    position: 30 
+  } ]
+  Title;
+  
+  @EndUserText.label: 'Genre'
+  @UI.identification: [ {
+    position: 40 , 
+    label: 'Genre'
+  } ]
+  @UI.lineItem: [ {
+    position: 40 , 
+    label: 'Genre'
+  } ]
+  @UI.selectionField: [ {
+    position: 40 
+  } ]
+  Genre;
+  
+  @EndUserText.label: 'Author'
+  @UI.identification: [ {
+    position: 50 , 
+    label: 'Author'
+  } ]
+  @UI.lineItem: [ {
+    position: 50 , 
+    label: 'Author'
+  } ]
+  @UI.selectionField: [ {
+    position: 50 
+  } ]
+  Author;
+  
+  @EndUserText.label: 'Price'
+  @UI.identification: [ {
+    position: 60 , 
+    label: 'Price'
+  } ]
+  @UI.lineItem: [ {
+    position: 60 , 
+    label: 'Price'
+  } ]
+  @UI.selectionField: [ {
+    position: 60 
+  } ]
+  Price;
+  
+  @EndUserText.label: 'PublishedDate'
+  @UI.identification: [ {
+    position: 70 , 
+    label: 'PublishedDate'
+  } ]
+  @UI.lineItem: [ {
+    position: 70 , 
+    label: 'PublishedDate'
+  } ]
+  @UI.selectionField: [ {
+    position: 70 
+  } ]
+  PublishedDate;
+  
+  @EndUserText.label: 'Stock'
+  @UI.identification: [ {
+    position: 80 , 
+    label: 'Stock'
+  } ]
+  @UI.lineItem: [ {
+    position: 80 , 
+    label: 'Stock'
+  } ]
+  @UI.selectionField: [ {
+    position: 80 
+  } ]
+  Stock;
+  
+  @EndUserText.label: 'DiscountedPrice'
+  @UI.identification: [ {
+    position: 90 , 
+    label: 'DiscountedPrice'
+  } ]
+  @UI.lineItem: [ {
+    position: 90 , 
+    label: 'DiscountedPrice'
+  } ]
+  @UI.selectionField: [ {
+    position: 90 
+  } ]
+  DiscountedPrice;
+  
+  @EndUserText.label: 'BookAge'
+  @UI.identification: [ {
+    position: 100 , 
+    label: 'BookAge'
+  } ]
+  @UI.lineItem: [ {
+    position: 100 , 
+    label: 'BookAge'
+  } ]
+  @UI.selectionField: [ {
+    position: 100 
+  } ]
+  BookAge;
+  
+  @UI.identification: [ {
+    position: 110 
+  } ]
+  @UI.lineItem: [ {
+    position: 110 
+  } ]
+  @UI.selectionField: [ {
+    position: 110 
+  } ]
+  LocalCreatedBy;
+  
+  @UI.identification: [ {
+    position: 120 
+  } ]
+  @UI.lineItem: [ {
+    position: 120 
+  } ]
+  @UI.selectionField: [ {
+    position: 120 
+  } ]
+  LocalCreatedAt;
+  
+  @UI.identification: [ {
+    position: 130 
+  } ]
+  @UI.lineItem: [ {
+    position: 130 
+  } ]
+  @UI.selectionField: [ {
+    position: 130 
+  } ]
+  LocalLastChangedBy;
+  
+  @UI.identification: [ {
+    position: 140 
+  } ]
+  @UI.lineItem: [ {
+    position: 140 
+  } ]
+  @UI.selectionField: [ {
+    position: 140 
+  } ]
+  LocalLastChangedAt;
+  
+  @UI.identification: [ {
+    position: 150 
+  } ]
+  @UI.lineItem: [ {
+    position: 150 
+  } ]
+  @UI.selectionField: [ {
+    position: 150 
+  } ]
+  LastChangedAt;
+  
+  @EndUserText.label: '_BaseEntity'
+  @UI.identification: [ {
+    position: 160 , 
+    label: '_BaseEntity'
+  } ]
+  @UI.lineItem: [ {
+    position: 160 , 
+    label: '_BaseEntity'
+  } ]
+  @UI.selectionField: [ {
+    position: 160 
+  } ]
+  _BaseEntity;
+}

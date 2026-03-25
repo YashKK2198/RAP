@@ -1,0 +1,11 @@
+@EndUserText: {
+  label: 'Service Definition for ZC_BOOK000ZAC'
+}
+@ObjectModel: {
+  leadingEntity: {
+    name: 'ZC_BOOK000ZAC'
+  }
+}
+define service ZUI_BOOKSTOREAPPLICATION_O4ZAC provider contracts odata_v4_ui {
+  expose ZC_BOOK000ZAC as Book;
+}

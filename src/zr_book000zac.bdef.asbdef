@@ -1,0 +1,55 @@
+managed implementation in class ZBP_R_BOOK000ZAC unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZR_BOOK000ZAC alias Book
+persistent table ZBOOK000ZAC
+extensible
+draft table ZBOOK000_DZAC
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   UUID,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   UUID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZBOOK000ZAC corresponding extensible
+  {
+    UUID = UUID;
+    BookID = BOOK_ID;
+    Title = TITLE;
+    Genre = GENRE;
+    Author = AUTHOR;
+    Price = PRICE;
+    PublishedDate = PUBLISHED_DATE;
+    Stock = STOCK;
+    DiscountedPrice = DISCOUNTED_PRICE;
+    BookAge = BOOK_AGE;
+    PriceCurr = PRICE_CURR;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}
