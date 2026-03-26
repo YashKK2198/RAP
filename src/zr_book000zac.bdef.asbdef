@@ -18,6 +18,9 @@ authorization master( global )
    LocalLastChangedAt,
    LastChangedAt;
 
+   field ( mandatory )
+   Title;
+
   field ( numbering : managed )
    UUID;
 
@@ -30,7 +33,12 @@ authorization master( global )
   draft action Discard;
   draft action Edit;
   draft action Resume;
-  draft determine action Prepare;
+  draft determine action Prepare
+  {
+   validation validateTitle;
+  }
+
+  validation validateTitle on save{create; update; }
 
   mapping for ZBOOK000ZAC corresponding extensible
   {
