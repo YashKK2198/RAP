@@ -40,6 +40,10 @@ authorization master( global )
 
   validation validateTitle on save{create; update; }
 
+  determination calculateBookAge on modify { create; field PublishedDate; }
+
+
+
   mapping for ZBOOK000ZAC corresponding extensible
   {
     UUID = UUID;
