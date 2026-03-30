@@ -41,6 +41,7 @@ authorization master( global )
   validation validateTitle on save{create; update; }
 
   determination calculateBookAge on modify { create; field PublishedDate; }
+  determination calcDiscountedPrice on modify { create; field Price; }
 
 
 

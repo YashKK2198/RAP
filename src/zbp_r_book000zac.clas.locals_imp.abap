@@ -10,7 +10,10 @@ CLASS lhc_zr_book000zac DEFINITION INHERITING FROM cl_abap_behavior_handler.
         IMPORTING keys FOR Book~validateTitle,
 
       calculateBookAge FOR DETERMINE ON MODIFY
-        IMPORTING keys FOR Book~calculateBookAge.
+        IMPORTING keys FOR Book~calculateBookAge,
+
+      calcDiscountedPrice FOR DETERMINE ON MODIFY
+        IMPORTING keys FOR Book~calcDiscountedPrice.
 ENDCLASS.
 
 CLASS lhc_zr_book000zac IMPLEMENTATION.
@@ -88,4 +91,46 @@ CLASS lhc_zr_book000zac IMPLEMENTATION.
       WITH lt_update.
 
 ENDMETHOD.
+
+  METHOD calcDiscountedPrice.
+
+    READ ENTITIES OF ZR_BOOK000ZAC IN LOCAL MODE
+      ENTITY Book
+        FIELDS ( Price )
+        WITH CORRESPONDING #( keys )
+      RESULT DATA(lt_book).
+
+    DATA lt_update TYPE TABLE FOR UPDATE ZR_BOOK000ZAC.
+    DATA lv_discounted_price TYPE p LENGTH 16 DECIMALS 2.
+
+    LOOP AT lt_book INTO DATA(ls_book).
+
+      APPEND VALUE #(
+        %tky        = ls_book-%tky
+        %state_area = 'CALC_DISCOUNTED_PRICE'
+      ) TO reported-book.
+
+      IF ls_book-Price >= 140.
+        lv_discounted_price = 120.
+      ELSEIF ls_book-Price >= 50.
+        lv_discounted_price = ls_book-Price - 10.
+      ELSEIF ls_book-Price >= 20.
+        lv_discounted_price = ls_book-Price - 5.
+      ELSE.
+        lv_discounted_price = ls_book-Price.
+      ENDIF.
+
+      APPEND VALUE #(
+        %tky            = ls_book-%tky
+        DiscountedPrice = lv_discounted_price
+      ) TO lt_update.
+
+    ENDLOOP.
+
+    MODIFY ENTITIES OF ZR_BOOK000ZAC IN LOCAL MODE
+      ENTITY Book
+        UPDATE FIELDS ( DiscountedPrice )
+        WITH lt_update.
+
+  ENDMETHOD.
 ENDCLASS.
